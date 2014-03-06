@@ -1,0 +1,33 @@
+{
+  "name": "thort",
+  "version": "0.0.1",
+  "description": "Passport inspired authenticator for general authentication purpose for node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taoyuan/thort.git"
+  },
+  "keywords": [
+    "auth",
+    "node",
+    "mosca",
+    "mqtt"
+  ],
+  "author": "Tao Yuan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/taoyuan/thort/issues"
+  },
+  "homepage": "https://github.com/taoyuan/thort",
+  "devDependencies": {
+    "chai": "^1.9.0",
+    "mocha": "^1.17.1",
+    "mosca": "^0.17.6",
+    "mqtt": "^0.3.7",
+    "utils-merge": "^1.0.0",
+    "bunyan": "^0.22.1"
+  }
+}
