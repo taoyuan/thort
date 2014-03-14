@@ -1,6 +1,7 @@
 "use strict";
 
 var Authenticator = require('../lib/authenticator');
+var AuthorizerStrategy = require('../lib/strategies/thort-authorizer');
 var s = require('./support');
 var t = s.assert;
 var h = require('./frameworks/mosca/helpers');
@@ -79,7 +80,6 @@ describe('Authenticator', function() {
                 t.lengthOf(Object.keys(client.authInfo), 0);
             });
         });
-
     });
 
 
@@ -143,5 +143,50 @@ describe('Authenticator', function() {
             });
         });
 
+    });
+    describe('authenticate using authorizer', function() {
+        var strategy = new AuthorizerStrategy();
+
+        var authenticator = new Authenticator();
+        authenticator.use('success', strategy);
+
+        var server, client, error;
+
+        before(function(done) {
+            strategy.authorizer.addUser("user", "pass", function () {
+                var settings = s.buildSettings();
+                server = h.server(settings)
+                    .authenticate(authenticator.authenticate('success'))
+                    .client(function (c) {
+                        client = c;
+
+                        client.login = function (user, options, done) {
+                            this.user = user;
+                            done();
+                        };
+                    })
+                    .connect(function (err) {
+                        error = err;
+                        done();
+                    })
+                    .start();
+
+                s.buildClient(settings.port, settings.host, {username: "user", password: "pass", reconnectPeriod: 0}); // disable reconnect
+            });
+        });
+
+        it('should not error', function() {
+            t.notOk(error);
+        });
+
+        it('should set user', function() {
+            t.isObject(client.user);
+            t.equal(client.user.username, 'user');
+        });
+
+        it('should set authInfo', function() {
+            t.isObject(client.authInfo);
+            t.lengthOf(Object.keys(client.authInfo), 0);
+        });
     });
 });

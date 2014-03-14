@@ -66,7 +66,7 @@ exports.buildClient = function buildClient(port, host, opts, callback) {
         callback = opts;
         opts = null;
     }
-    opts = opts || exports.buildOpts();
+    opts = merge(exports.buildOpts(), opts);
     callback = callback || function () {};
 
     var client = mqtt.createClient(port, host, opts);
