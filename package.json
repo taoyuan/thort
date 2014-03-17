@@ -1,6 +1,6 @@
 {
   "name": "thort",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Passport inspired authenticator for general authentication purpose for node.js",
   "main": "index.js",
   "scripts": {
