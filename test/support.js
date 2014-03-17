@@ -3,7 +3,7 @@
 var chai = require('chai');
 chai.Assertion.includeStack = true;
 var mqtt = require('mqtt');
-var merge = require('utils-merge');
+var merge = require('../').utils.merge;
 var bunyan = require('bunyan');
 
 process.env.NODE_ENV = 'test';

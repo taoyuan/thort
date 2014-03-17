@@ -20,3 +20,5 @@ exports.Thort = exports.Authenticator = Thort;
 
 exports.frameworks = {};
 exports.frameworks.mosca = require('./lib/frameworks/mosca');
+
+exports.utils = require('./lib/utils');
