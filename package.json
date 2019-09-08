@@ -23,10 +23,10 @@
   },
   "homepage": "https://github.com/taoyuan/thort",
   "devDependencies": {
-    "chai": "^1.9.0",
-    "mocha": "^1.17.1",
-    "mosca": "^0.17.6",
-    "mqtt": "^0.3.7",
-    "bunyan": "^0.22.1"
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "mosca": "^2.8.3",
+    "mqtt": "^3.0.0",
+    "bunyan": "^1.8.12"
   }
 }
